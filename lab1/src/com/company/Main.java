@@ -1,6 +1,6 @@
 package com.company;
 public class Main {
-    public static int searchIndex(int array[], int value) {
+    public static int searchIndex(int[] array, int value) {
         int index = 0;
         int limit = array.length - 1;
         while (index <= limit) {
@@ -18,8 +18,8 @@ public class Main {
         }
         return -1;
     }
-    public static void main(String args[]) {
-        int array[] = { 4, 5, 7, 11, 12, 15, 15, 21, 40, 45 };
+    public static void main(String[] args) {
+        int[] array = { 4, 5, 7, 11, 12, 15, 15, 21, 40, 45 };
         int index = searchIndex(array, 11);
         System.out.println(index);
     }
