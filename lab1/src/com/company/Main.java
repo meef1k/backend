@@ -1,10 +1,7 @@
 package com.company;
 import java.io.*;
-import java.nio.charset.StandardCharsets;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -15,16 +12,15 @@ class File{
     public void displayFile(String path) throws IOException{
         try(InputStream input = new BufferedInputStream((new FileInputStream(path)))){
             byte[] buffer = new byte[8192];
-            for(int length = 0; (length = input.read(buffer)) != -1; ){
+            for(int length; (length = input.read(buffer)) != -1; ){
                 System.out.write(buffer, 0, length);
             }
         }
     }
     public void writeFile(String text) throws IOException{
         try(FileOutputStream file = new FileOutputStream("./output.txt")){
-            byte bytes[] = text.getBytes();
+            byte[] bytes = text.getBytes();
             file.write(bytes);
-            file.close();
         }
     }
 }
@@ -46,7 +42,7 @@ class CRC{
             int code = Character.codePointAt(text, i);
             crc = CRC_TABLE[(code ^ crc) & 0xFF] ^ (crc >>> 8);
         }
-        return (-1 ^ crc) >>> 0;
+        return (~crc);
     }
 }
 class Time{
@@ -83,7 +79,8 @@ public class Main {
     }
     public static void main(String[] args) {
         int[] array = { 4, 5, 7, 11, 12, 15, 15, 21, 40, 45 };
-        int index = searchIndex(array, 11);
+        int value = 11;
+        int index = searchIndex(array, value);
         System.out.println("Index: " + index);
 
         CRC crc = new CRC();
@@ -94,8 +91,8 @@ public class Main {
         time.getGlobalTime();
 
         File file = new File();
-        System.out.println("Splitted text: ");
-        String[] lines = file.splitLines("Coco channel\nna dobry dzien");
+        System.out.println("Split text: ");
+        String[] lines = file.splitLines("Coco channel\nna dobry dzień");
         for(String line : lines){
             System.out.println(line);
         }
