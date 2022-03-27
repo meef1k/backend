@@ -84,7 +84,7 @@ public class Main {
         System.out.println("Index: " + index);
 
         CRC crc = new CRC();
-        System.out.println("CRC: " + crc.calculate("Coco channel..."));
+        System.out.println("CRC: " + crc.calculate("This is example text ..."));
 
         Time time = new Time();
         time.getLocalTime();
@@ -92,7 +92,7 @@ public class Main {
 
         File file = new File();
         System.out.println("Split text: ");
-        String[] lines = file.splitLines("Coco channel\nna dobry dzień");
+        String[] lines = file.splitLines("Coco \nchannel");
         for(String line : lines){
             System.out.println(line);
         }
