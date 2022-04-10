@@ -1,27 +1,22 @@
 package com.example.lab2;
 
 public class UserEntity {
-    private long Id;
     private String name;
-
-    public UserEntity(long id, String name) {
-        Id = id;
+    private String surname;
+    public UserEntity(String name, String surname) {
         this.name = name;
+        this.surname = surname;
     }
-
-    public long getId() {
-        return Id;
-    }
-
     public String getName() {
         return name;
     }
-
-    public void setId(long id) {
-        Id = id;
-    }
-
     public void setName(String name) {
         this.name = name;
+    }
+    public String getSurname() {
+        return surname;
+    }
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 }
